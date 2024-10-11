@@ -92,9 +92,11 @@
   }
 }
 
+
+
 /* CUSTOM CSS */
 .home-hero {
-  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.336), rgba(0, 0, 0, 0.075)),url(/img/fallHero.jpeg);
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.336), rgba(0, 0, 0, 0.075));
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -221,6 +223,12 @@
   font-weight: 300;
   font-style: normal;
 }
+.source-sans-italic-300 {
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: italic;
+}
 
 .source-sans-400 {
   font-family: "Source Sans 3", sans-serif;
@@ -277,8 +285,12 @@
    animation: slideInFromBottom 1.5s ease-in-out;
 }
 .animation-h {
-   animation: heightFull 1.5s ease-in-out;
+   animation: heightFull 0.5s ease-in-out;
+   z-index: 1000;
 }
+
+
+
 
 /* Key Frames */
 @keyframes heightFull {
@@ -352,14 +364,146 @@
 }
 
 .dropDown{
-  animation: slideInFromRight 1s ease-in-out 3.3s;
+  animation: slideInFromRight 0.3s ease-in-out 3.3s;
+  z-index: 1000000;
 }
 
 .navBorder{
-  border-image: linear-gradient(to right, #8585857e 0%, #b6b6b654 80%) 0 0 1 0;
-  border-radius: 5px; /* this doesn't work */
-  border-width: 1px;
-  border-style: solid;
-  padding: 5px;
+  z-index: 8000;
 
+}
+
+
+
+.changeColor {
+  color: #0f063f7c;
+  transition: all 0.3s ease;
+}
+.changeColor:hover {
+  color: #0f063f;
+}
+
+
+
+
+
+/* From Uiverse.io by nikk7007 */ 
+.rmbtnBlue {
+  --color: #f58720;
+  --color2: #fff;
+  padding: 0.8em 1.75em;
+  background-color: white;
+  transition: .5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 500;
+  font-size: max(1vw, 15px);
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  font-variant: small-caps;
+  word-spacing: 2px;
+  color: var(--color);
+  box-shadow: rgba(100, 100, 111, 0.58) 0px 7px 29px 0px;
+ }
+ 
+ .rmbtnBlue::after, .rmbtnBlue::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: .5s ease-out;
+  background-color: var(--color);
+ }
+ 
+ .rmbtnBlue::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .rmbtnBlue:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .rmbtnBlue:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+ }
+ 
+ .rmbtnBlue:hover {
+  color: var(--color2);
+  box-shadow: rgba(100, 100, 111, 0.58) 0px 7px 29px 0px;
+ }
+ 
+ .rmbtnBlue:active {
+  filter: brightness(.7);
+  transform: scale(.98);
+ }
+
+
+
+ /* From Uiverse.io by alexmaracinaru */ 
+/* From Uiverse.io by alexmaracinaru */ 
+.cta {
+  position: relative;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 0;
+  display: block;
+  border-radius: 50px;
+  background: #f58720ab;
+  width: 45px;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+.cta span {
+  position: relative;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: #0f063f;
+  transition: all 0.3s ease;
+}
+
+.cta svg {
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #0f063f;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+  width: 100%;
+  background: #f58720;
+  
+}
+
+.cta:hover > span {
+  color: white;
+}
+.cta:hover > svg {
+  transform: translateX(0);
+  stroke: white !important;
+}
+
+.cta:active {
+  transform: scale(0.95);
 }

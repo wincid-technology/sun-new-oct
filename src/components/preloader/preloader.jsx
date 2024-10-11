@@ -38,7 +38,7 @@ const PreLoader = () => {
       });
       setTimeout(() => {
         setIsVisible(false);
-      }, 3000); // Adjust timing to match your animations
+      }, 2500); // Adjust timing to match your animations
     }
   }, [loadingComplete]);
 
@@ -46,7 +46,7 @@ const PreLoader = () => {
     <>
       {isVisible && (
         <>
-          <div className="counter">{progress}%</div>
+          <div className="counter kanit-medium">{progress}%</div>
           <div className="overlay">
             {[...Array(10)].map((_, i) => (
               <div key={i} className="bar"></div>

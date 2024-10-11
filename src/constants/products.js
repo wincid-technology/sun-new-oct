@@ -1,44 +1,58 @@
 export const products = [
   {
     id: 1,
-    title: "Box Name",
+    title: "Corrugated Boxes",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo aut deserunt, ",
-    img: "/images/home/single.jpeg",
+      "Durable corrugated boxes for safe, secure, and efficient packaging needs",
+    img: "/productimg/corrugated.png",
   },
   {
     id: 2,
-    title: "Box Name",
+    title: "Die Cut Boxes",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo aut deserunt, ",
-    img: "/images/home/single.jpeg",
+      "Custom die cut boxes for precision fit, protection, and perfect retail presentation",
+    img: "/productimg/diecut.png",
   },
   {
     id: 3,
-    title: "Box Name",
+    title: "Heighted boxes",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo aut deserunt, ",
-    img: "/images/home/single.jpeg",
+      "Heighted boxes provide extra space for large, safe, and secure storage solutions",
+    img: "/productimg/heighted.png",
   },
   {
     id: 4,
-    title: "Box Name",
+    title: "Corrugated Rolls",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo aut deserunt, ",
-    img: "/images/home/single.jpeg",
+      "Flexible corrugated rolls for protective wrapping and versatile packaging.",
+    img: "/productimg/corolls.png",
   },
   {
     id: 5,
-    title: "Box Name",
+    title: "Corrugated Sheets",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo aut deserunt, ",
-    img: "/images/home/single.jpeg",
-  },
+      "Sturdy corrugated sheets ideal for stacking, separation, and protection",
+      img: "/productimg/corsheet.png",
+    },
   {
     id: 6,
-    title: "Box Name",
+    title: "Display Boxes",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia nemo aut deserunt, ",
-    img: "/images/home/single.jpeg",
+      "Eye-catching corrugated display boxes for impactful retail presentation",
+    img: "/productimg/display2.jpg",
+  },
+  {
+    id: 7,
+    title: "Food Packaging Boxes",
+    description:
+      "Hygienic food packaging boxes ensuring freshness, safety, and convenience",
+    img: "/productimg/food.png",
+  },
+  {
+    id: 8,
+    title: "Tape Rolls & Pipes",
+    description:
+      "Durable tape rolls & pipes for secure sealing and efficient packaging solutions",
+    img: "/productimg/tapes.png",
   },
 ];

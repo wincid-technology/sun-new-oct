@@ -1,9 +1,7 @@
 const HeadingTwo = ({title, black}) => {
   return (
     <h2
-      className={`kanit-medium md:text-5xl text-3xl border-b-4  border-transparent pb-1 w-fit mx-auto bg-clip-text ${
-        black ? "text-black hover:border-black" : "text-white hover:border-white"
-      }`}
+      className={"kanit-medium md:text-5xl text-3xl text-[#0F063F] w-fit mx-auto bg-clip-text"}
     >
       {title}
     </h2>
