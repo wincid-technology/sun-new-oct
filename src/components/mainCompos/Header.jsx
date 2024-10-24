@@ -3,7 +3,8 @@ import Carousel from "../typography/Slider";
 
 const Header = () => {
   return (
-    <section className="min-h-screen max-h-screen h-screen home-hero overflow-hidden flex flex-col items-center justify-center">
+    // <div>1</div>
+    <section className="min-h-[86.6vh] max-h-[86.6vh] h-[86.6vh] home-hero flex flex-col items-center justify-center">
        
       <div className="bg-transparent w-full overflow-hidden absolute">
         <Carousel />

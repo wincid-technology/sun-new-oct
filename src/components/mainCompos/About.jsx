@@ -1,5 +1,6 @@
 import HeadingTwo from "@/components/typography/HeadingTwo";
 import Image from "next/image";
+import Link from "next/link";
 
 
 
@@ -19,13 +20,13 @@ const About = () => {
                                 reliability, serving diverse industries with precision and care.
                                 Trust us to protect what matters most. At Coropack, we specialize in creating high-quality, eco-friendly packaging designed to fit your unique products. Our solutions ensure maximum protection while minimizing environmental impact. Trust us to elevate your brand with packaging that delivers both style and sustainability. </p>
 
-                            <button className="cta flex items-center kanit-medium">
-                                <span>Hover me</span>
+                            <Link href={"/about"} className="cta flex items-center kanit-medium">
+                                <span>Read More</span>
                                 <svg width="15px" height="10px" viewBox="0 0 13 10">
                                     <path d="M1,5 L11,5"></path>
                                     <polyline points="8 1 12 5 8 9"></polyline>
                                 </svg>
-                            </button>
+                            </Link>
                         </div>
 
                     </div>

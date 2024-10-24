@@ -1,10 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 
-const Logo = ({text}) => {
+const Logo = () => {
   return (
-    <div className="w-fit flex items-center">
-      <Link href="/" className="block mx-auto">
+    <span className="w-fit flex items-center">
+      <Link href={"/"} className="block mx-auto">
         <Image
           src="/images/newLogo.png"
           alt=""
@@ -12,7 +12,7 @@ const Logo = ({text}) => {
           width={50}
         />
       </Link>
-    </div>
+    </span>
   );
 }
 export default Logo

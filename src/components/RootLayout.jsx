@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from "react";
-import { NavbarSimple } from "@/components/pieces/Navbar";
+
 import Footer from "@/components/pieces/Footer";
-import Preloader from "@/components/preloader/preloader";
+import Nav from "./pieces/Nav";
+import PreLoader from "./preloader/preloader";
 
 export default function RootLayout({ children }) {
 
@@ -11,9 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <>
 
-      {/* <Preloader /> */}
+      <PreLoader />
       <div id="mainBg" className="overflow-x-hidden">
-        <NavbarSimple />
+        <Nav />
         <main role="main">{children}</main>
         <Footer />
       </div>

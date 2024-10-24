@@ -27,6 +27,11 @@
   }
 }
 
+::selection{
+  background-color: #f58720;
+  color: white;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -91,6 +96,12 @@
     @apply bg-background text-foreground;
   }
 }
+.imgScale >img{
+  transition: all 0.5s ease;
+}
+.imgScale:hover > img{
+    transform: scale(1.3) rotate(10deg);
+}
 
 
 
@@ -100,6 +111,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  z-index: -1;
 }
 
 .kanit-thin {
@@ -286,7 +298,7 @@
 }
 .animation-h {
    animation: heightFull 0.5s ease-in-out;
-   z-index: 1000;
+   z-index: 15000 !important;
 }
 
 
@@ -301,6 +313,7 @@
   100% {
     transform: translateY(0px);
     opacity: 1;
+    z-index: inherit;
     
   }
 }
@@ -334,21 +347,16 @@
 
 @keyframes slideInFromRight {
   0% {
-    transform: translateX(20%);
+    transform: translateY(20%);
     opacity: 0;
   }
-  80% {
-    transform: translateX(-5%);
-  }
   100% {
-    transform: translateX(0);
+    transform: translate(0);
     opacity: 1;
   }
 }
 
-.logoBounce{
-  animation: bounceLogoIn 1s ease-in-out 3.3s;
-}
+
 
 @keyframes bounceLogoIn {
   0% {
@@ -363,6 +371,7 @@
   100% { transform: scale(1); }
 }
 
+
 .dropDown{
   animation: slideInFromRight 0.3s ease-in-out 3.3s;
   z-index: 1000000;
@@ -371,6 +380,20 @@
 .navBorder{
   z-index: 8000;
 
+}
+
+.ethicsCard, .ethicLogo{
+  transition: all 0.5s ease;
+}
+
+.ethicsCard:hover{
+  box-shadow: 0px 0px 16px #f58720;
+}
+.ethicsCard:hover .ethicLogo{
+  animation: bounceLogoIn 0.5s ease;
+}
+.ethicsCard:hover .ethictitle{
+  animation: slideInFromRight 0.5s ease;
 }
 
 
@@ -492,13 +515,9 @@
 
 .cta:hover:before {
   width: 100%;
-  background: #f58720;
   
 }
 
-.cta:hover > span {
-  color: white;
-}
 .cta:hover > svg {
   transform: translateX(0);
   stroke: white !important;
