@@ -8,52 +8,77 @@ import React, { useState } from 'react'
 import { MdOutlineWhatsapp, MdOutlineMailOutline } from "react-icons/md";
 import { FiPhoneCall } from "react-icons/fi";
 import { GrLocation } from "react-icons/gr";
+import { supabase } from '@/lib/supabaseClient';
 
 const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(formData.name, formData.email, formData.phone, formData.message)
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-    
-      if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Error response:', errorData);
-        alert(errorData.message); // Alert the user about the error
-        return;
-      }
-    
-      alert('Message sent!');
-      setFormData({ name: '', email: '', phone: '', message: '' });
-    } catch (error) {
-      console.error('Fetch error:', error);
-      alert('An error occurred. Please try again.');
-    }
-
-  };
 
 
   const { phone, phoneTwo, email } = contact;
+
+    // State for form data
+    const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+  
+    // State for form submission status
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [successMessage, setSuccessMessage] = useState(null);
+  
+    // Handle input changes
+    const handleChange = (e) => {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+      });
+    };
+  
+    // Handle form submission
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setIsSubmitting(true);
+    
+      // Generate a unique ID
+      const uniqueId = `${Math.floor(Math.random() * 1000)}`;
+      
+      // Get the current date
+      const currentDate = new Date()
+    
+      // Prepare data with unique ID and date
+      const dataToInsert = {
+        ...formData,
+        unique_id: uniqueId, // Add unique ID to form data
+        created_at: currentDate, // Add current date to form data
+      };
+    
+      try {
+        // Insert form data into Supabase
+        const { data, error } = await supabase
+          .from('Contact Entries')  // Use your table name
+          .insert([dataToInsert]);
+    
+        if (error) throw error;
+    
+        // Clear form after submission
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+        setSuccessMessage('Message sent successfully!');
+        alert('Message sent successfully!');
+        console.log(dataToInsert); // Log the data sent to Supabase
+      } catch (error) {
+        console.error('Error sending message:', error.message);
+      } finally {
+        setIsSubmitting(false);
+      }
+    };
+    
+
   return (
     <div>
 
@@ -103,8 +128,8 @@ const ContactPage = () => {
                     <GrLocation className="size-6" color="#f58720" />
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-gray-800 text-xl kanit-medium font-bold">Visit office</h4>
-                    <p className="text-sm md:text-[1rem]  text-gray-500 mt-1">Plot No. 7, Arjunpura, Khalsa, Ajmer (Raj.)</p>
+                    <h4 className="text-[#0f063f] text-xl kanit-medium font-bold">Visit office</h4>
+                    <p className="text-sm md:text-[1rem] kanit-light  text-gray-500 mt-1">Plot No. 7, Arjunpura, Khalsa, Ajmer (Raj.)</p>
                   </div>
                 </a>
 
@@ -113,11 +138,11 @@ const ContactPage = () => {
                     <FiPhoneCall className="size-6" color="#f58720" />
                   </div>
                   <div className="ml-4 flex flex-col items-start">
-                    <h4 className="text-gray-800 text-xl kanit-medium font-bold">Call us</h4>
+                    <h4 className="text-[#0f063f] text-xl kanit-medium font-bold">Call us</h4>
 
-                    <div className="flex gap-5">
-                      <Link className="text-sm md:text-[1rem] text-gray-500 mt-1" href={`tel:${phone}`}>+91-9829189242</Link>
-                      <Link className="text-sm md:text-[1rem] text-gray-500 mt-1" href={`tel:${phoneTwo}`}>+91-9414089242</Link>
+                    <div className="flex gap-0 sm:gap-5 flex-wrap">
+                      <Link className="text-sm md:text-[1rem] kanit-light text-gray-500 mt-1" href={`tel:${phone}`}>+91-9829189242</Link>
+                      <Link className="text-sm md:text-[1rem] kanit-light text-gray-500 mt-1" href={`tel:${phoneTwo}`}>+91-9414089242</Link>
                     </div>
 
                   </div>
@@ -128,8 +153,8 @@ const ContactPage = () => {
                     <MdOutlineWhatsapp className="size-6" color="#f58720" />
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-gray-800 text-xl kanit-medium font-bold">Chat to us</h4>
-                    <p className="text-sm md:text-[1rem] text-gray-500 mt-1">{phone}</p>
+                    <h4 className="text-[#0f063f] text-xl kanit-medium font-bold">Chat to us</h4>
+                    <p className="text-sm md:text-[1rem] kanit-light text-gray-500 mt-1">{phone}</p>
                   </div>
                 </Link>
 
@@ -138,8 +163,8 @@ const ContactPage = () => {
                     <MdOutlineMailOutline className="size-6" color="#f58720" />
                   </div>
                   <div className="ml-4">
-                    <h4 className="text-gray-800 text-xl kanit-medium font-bold">E-mail</h4>
-                    <p className="text-sm md:text-[1rem] text-gray-500 mt-1 text-wrap">{email}</p>
+                    <h4 className="text-[#0f063f] text-xl kanit-medium font-bold">E-mail</h4>
+                    <p className="text-xs md:text-[1rem] kanit-light text-gray-500 mt-1">{email}</p>
                   </div>
                 </Link>
               </div>

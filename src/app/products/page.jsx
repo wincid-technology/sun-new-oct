@@ -50,7 +50,7 @@ const ProductsPage = () => {
         <p className="text-md text-[#0f063f] leading-relaxed kanit-light md:max-w-xl lg:max-w-3xl">At Sunshine Coropack, we specialize in crafting high-quality corrugated boxes designed to protect and showcase your products. Our durable, eco-friendly packaging solutions are tailored to meet your business’s unique needs.</p>
 
         <div className="kanit-regular">
-          <div className="p-2 md:p-10 mx-auto lg:max-w-full sm:max-w-full">
+          <div className="p-0 sm:p-8 md:p-10 mx-auto lg:max-w-full sm:max-w-full">
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 max-xl:gap-4 gap-6">
               {

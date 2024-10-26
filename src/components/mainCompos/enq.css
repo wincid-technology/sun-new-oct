@@ -1,6 +1,6 @@
 .card {
-  width: 500px;
-  height: 150px;
+  width: max(30vw, 260px);
+  height: max(8vh, 130px);
   perspective: 1000px;
   
 }

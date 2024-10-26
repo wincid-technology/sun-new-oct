@@ -57,13 +57,13 @@ const Carousel = () => {
           <Hero />
 
         <div
-          className="relative float-left -mr-[100%] h-full !transform-none opacity-0 transition-opacity duration-&lsqb;600ms&rsqb; ease-in-out motion-reduce:transition-none"
+          className="relative float-left -mr-[100%] h-full !transform-none opacity-0 transition-opacity duration-&lsqb;9  00ms&rsqb; ease-in-out motion-reduce:transition-none"
           data-twe-carousel-fade
           data-twe-carousel-item
           data-twe-carousel-active>
           <img
             src="/img/herosection.jpg"
-            className="block h-[86.6vh] w-screen object-cover object-top"
+            className="block h-[87.5vh] w-screen object-cover object-top"
             alt="Hero image 1" />
         </div>
 
@@ -73,7 +73,7 @@ const Carousel = () => {
           data-twe-carousel-item>
           <img
             src="/img/rollsHero.jpg"
-            className="block h-[86.6vh] w-screen object-cover object-top"
+            className="block h-[87.5vh] w-screen object-cover object-top"
             alt="Hero image 2" />
         </div>
 
@@ -83,7 +83,7 @@ const Carousel = () => {
           data-twe-carousel-item>
           <img
             src="/img/hero.jpeg"
-            className="block h-[86.6vh] w-screen object-cover object-top"
+            className="block h-[87.5vh] w-screen object-cover object-top"
             alt="Hero image 3" />
         </div>
 
@@ -93,7 +93,7 @@ const Carousel = () => {
           data-twe-carousel-item>
           <img
             src="/img/hero33.jpg"
-            className="block h-[86.6vh] w-screen object-cover object-top"
+            className="block h-[87.5vh] w-screen object-cover object-top"
             alt="Hero image 4" />
         </div>
       </div>

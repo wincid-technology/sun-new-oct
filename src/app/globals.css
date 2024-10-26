@@ -414,7 +414,7 @@
 .rmbtnBlue {
   --color: #f58720;
   --color2: #fff;
-  padding: 0.8em 1.75em;
+  padding: 0.6em 1.75em;
   background-color: white;
   transition: .5s;
   position: relative;

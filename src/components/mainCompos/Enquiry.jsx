@@ -5,16 +5,21 @@ import './enq.css';
 import { FaPhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import HeadingTwo from "../typography/HeadingTwo";
+import Link from "next/link";
 
 const Enquiry = () => {
+
+  const { phone, phoneTwo, email } = contact;
 
   return (
     <>
       <div className="flex flex-col p-10 gap-10 bg-[#e7e7e7]">
 
         <HeadingTwo title={"Quick Enquiry"} />
-        <div className="w-full flex justify-evenly">
-          <div className="card">
+        <div className="w-full flex flex-col sm:flex-row gap-5 md:gap-20 justify-center items-center">
+
+
+          <Link href={`tel:${phone}`} className="card">
             <div className="card-inner">
               <div className="card-front bg-[#0F063F]">
                 <p className="flex justify-center flex-col text-[max(1.3vw,18px)] items-center kanit-light gap-3">
@@ -27,9 +32,9 @@ const Enquiry = () => {
                 <p className="text-[max(1.3vw,15px)]">{contact.phoneTwo}</p>
               </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="card">
+          <Link href={"mailto:sunshinecoropack@yahoo.com"} className="card">
             <div className="card-inner">
               <div className="card-front bg-[#0F063F]">
                 <p className="flex justify-center flex-col text-[max(1.3vw,18px)] items-center kanit-light gap-3">
@@ -38,10 +43,10 @@ const Enquiry = () => {
                 </p>
               </div>
               <div className="card-back flex flex-col">
-                <p className="text-[max(1.3vw,13px)]">{contact.email}</p>
+                <p className="text-[max(1.3vw,15px)]">{contact.email}</p>
               </div>
             </div>
-          </div>
+          </Link>
 
         </div>
 
