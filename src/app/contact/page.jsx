@@ -9,6 +9,7 @@ import { MdOutlineWhatsapp, MdOutlineMailOutline } from "react-icons/md";
 import { FiPhoneCall } from "react-icons/fi";
 import { GrLocation } from "react-icons/gr";
 import { supabase } from '@/lib/supabaseClient';
+import MsgModal from '@/components/mainCompos/MsgModal';
 
 const ContactPage = () => {
 
@@ -25,62 +26,60 @@ const ContactPage = () => {
   
     // State for form submission status
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [successMessage, setSuccessMessage] = useState(null);
-  
-    // Handle input changes
-    const handleChange = (e) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Show the modal immediately when the button is clicked
+    setIsModalVisible(true);
+
+    setIsSubmitting(true);
+
+    const uniqueId = `${Math.floor(Math.random() * 1000)}`;
+    const currentDate = new Date();
+
+    const dataToInsert = {
+      ...formData,
+      unique_id: uniqueId,
+      created_at: currentDate,
+    };
+
+    try {
+      const { data, error } = await supabase
+        .from('Contact Entries')
+        .insert([dataToInsert]);
+
+      if (error) throw error;
+
       setFormData({
-        ...formData,
-        [e.target.name]: e.target.value
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
       });
-    };
-  
-    // Handle form submission
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      setIsSubmitting(true);
-    
-      // Generate a unique ID
-      const uniqueId = `${Math.floor(Math.random() * 1000)}`;
       
-      // Get the current date
-      const currentDate = new Date()
-    
-      // Prepare data with unique ID and date
-      const dataToInsert = {
-        ...formData,
-        unique_id: uniqueId, // Add unique ID to form data
-        created_at: currentDate, // Add current date to form data
-      };
-    
-      try {
-        // Insert form data into Supabase
-        const { data, error } = await supabase
-          .from('Contact Entries')  // Use your table name
-          .insert([dataToInsert]);
-    
-        if (error) throw error;
-    
-        // Clear form after submission
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: ''
-        });
-        setSuccessMessage('Message sent successfully!');
-        alert('Message sent successfully!');
-        console.log(dataToInsert); // Log the data sent to Supabase
-      } catch (error) {
-        console.error('Error sending message:', error.message);
-      } finally {
-        setIsSubmitting(false);
-      }
-    };
+    } catch (error) {
+      console.error('Error sending message:', error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
     
 
   return (
     <div>
+
+      {/* Modal Component */}
+      <MsgModal isVisible={isModalVisible} onClose={() => setIsModalVisible(false)} />
 
       <div className="kanit-light">
         <div className="bg-gradient-to-r from-blue-700 to-blue-300 w-full h-80">
@@ -116,7 +115,7 @@ const ContactPage = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='currentColor' className="mr-2 inline" viewBox="0 0 548.244 548.244">
                       <path fillRule="evenodd" d="M392.19 156.054 211.268 281.667 22.032 218.58C8.823 214.168-.076 201.775 0 187.852c.077-13.923 9.078-26.24 22.338-30.498L506.15 1.549c11.5-3.697 24.123-.663 32.666 7.88 8.542 8.543 11.577 21.165 7.879 32.666L390.89 525.906c-4.258 13.26-16.575 22.261-30.498 22.338-13.923.076-26.316-8.823-30.728-22.032l-63.393-190.153z" clipRule="evenodd" data-original="#000000" />
                     </svg>
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </div>
 
