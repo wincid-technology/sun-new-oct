@@ -1,8 +1,17 @@
+// /app/products/[id]/page.js
+
 import ProductDetails from '@/components/mainCompos/ProductDetails';
 import { allproducts } from '@/constants/allproducts';
 
+export async function generateStaticParams() {
+  // Generate the static paths for each product ID
+  return allproducts.map((product) => ({
+    id: product.id.toString(),
+  }));
+}
+
 export default function ProductDetailPage({ params }) {
-  const { id, title } = params;
+  const { id } = params;
 
   // Debugging: Log params and the id
   console.log("Params:", params);
